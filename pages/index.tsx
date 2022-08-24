@@ -43,8 +43,8 @@ const Wedding = ({files, gid, keyPhoto, zipLocation}: GalleryProps) => {
       <div className={styles.galleryView} ref={lazyRoot} style={{}}>
         {items?.map((file, index) => (
           <div key={`${gid}-${index}`} className={styles.photoLink}>
-            <Link href={`/${file.split('.')[0]}`}>
-              <a href={`/${file.split('.')[0]}`}>
+            <Link href={`/photos/${file.split('.')[0]}`}>
+              <a href={`/photos/${file.split('.')[0]}`}>
                 <Image src={`/galleries/${gid}/${file}`} lazyRoot={lazyRoot} loading="lazy" width={120} height={150} alt={`${gid} Gallery, Photo ${index + 1} of ${files.length}`} className={styles.photo} objectFit='cover' />
               </a>
             </Link>

@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 32px - 2rem);
   display: grid;
   grid-template-rows: 1fr min-content;
   overflow: hidden;
@@ -35,7 +35,7 @@
   display: none;
 
   @media (min-width: 768px) {
-    flex-direction: block;
+    display: block;
   }
 }
 
@@ -46,8 +46,9 @@
   width: 100vw;
 
   @media (min-width: 768px) {
-    gap: 2;    
-    padding: '2rem';
+    gap: 1rem;    
+    padding: 2rem;
+    height: calc(100vh - 108px - 8rem);
   }
 }
 
@@ -60,6 +61,6 @@
 
   @media (min-width: 768px) {
     margin: 2rem;
-    height: 80vh;
+    height: calc(100vh - 108px - 8rem);
   }
 }

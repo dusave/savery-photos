@@ -6,11 +6,10 @@ import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useTheme } from '@nextui-org/react';
-import { getGalleries } from 'pages/api/fetch-all-galleries';
-import { getGalleryFiles } from 'pages/api/fetch-all-image-paths';
 import { GetStaticPropsContext } from 'next';
 import styles from 'styles/photo.module.scss'
 import { useSwipeable } from 'react-swipeable';
+import { getGalleries, getGalleryFiles } from 'utils/galleryData';
 
 export async function getStaticPaths() {
   const galleries = await getGalleries();
@@ -80,11 +79,11 @@ const Wedding = ({pid, gid, galleryCount}: WeddingProps) => {
     <section className={styles.container} {...handlers}>
       <div className={styles.closeButton}><Link href={`/`}><a><FontAwesomeIcon icon={duotone('x')} /></a></Link></div>
       <div className={styles.photoContainer}>
-        <div className={styles.leftArrow}><Link href={`/photos/${parseInt(pid as string) - 1}`}><Button rounded color="secondary" auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-left')} />}></Button></Link></div>
+        <div className={styles.leftArrow}><Link href={`/photos/${parseInt(pid as string) - 1}`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-left')} />}></Button></Link></div>
         <div className={styles.photo}>
             <Image src={`/galleries/${gid}/${pid}.jpeg`} priority loading="eager" layout='fill' alt={`The ${gid} wedding, photo ${pid}`} objectFit={'contain'} />
         </div>
-        <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><Button rounded color="secondary" auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-right')} color={theme?.colors.primary.value} /> } css={{color: '$primary'}}></Button></Link></div>
+        <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-right')} color={theme?.colors.primary.value} /> } css={{color: '$primary'}}></Button></Link></div>
       </div>
       <div className={styles.buttonContainer}>
         <Link href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=sm`}><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></Link>

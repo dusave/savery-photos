@@ -4,11 +4,11 @@ import { Button } from '@nextui-org/react'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getData } from './api/fetch-gallery-config'
 
 import styles from 'styles/wedding.module.scss'
 import { useMemo, useRef } from 'react'
 import { natSort } from 'utils/sort'
+import { getConfig } from 'utils/galleryData'
 
 interface GalleryProps {
   keyPhoto: string
@@ -19,7 +19,7 @@ interface GalleryProps {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const gid = 'killham-savery'
-  const config = await getData(gid as string);
+  const config = await getConfig(gid as string);
   const props: Partial<GalleryProps> = {...config}
   
   return {

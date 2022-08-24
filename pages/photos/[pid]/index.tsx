@@ -86,9 +86,9 @@ const Wedding = ({pid, gid, galleryCount}: WeddingProps) => {
         <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-right')} color={theme?.colors.primary.value} /> } css={{color: '$primary'}}></Button></Link></div>
       </div>
       <div className={styles.buttonContainer}>
-        <Link href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=sm`}><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></Link>
-        <Link href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=lg`}><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Large Image</Button></Link>
-        <Link href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=full`}><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Fullsize Image</Button></Link>
+        <a href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=sm`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></a>
+        <a href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=lg`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Large Image</Button></a>
+        <a href={`/api/fetch-image?gid=${gid}&pid=${pid}&size=full`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Fullsize Image</Button></a>
       </div>
     </section>
   )

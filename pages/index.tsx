@@ -36,7 +36,7 @@ const Wedding = ({files, gid, keyPhoto, zipLocation}: GalleryProps) => {
 
   return (
     <div>
-      <a className={styles.download} href={`/galleries/${gid}.zip`} download>
+      <a className={styles.download} href={zipLocation} download>
         <Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost><span>Download Entire Gallery</span></Button>
       </a>
       {keyPhoto && <div className={styles.keyPhoto}><Image src={`/galleries/${gid}/${keyPhoto}.jpeg`} layout='fill' alt={`${gid} album`} /></div>}

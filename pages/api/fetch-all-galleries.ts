@@ -5,7 +5,7 @@ import path from 'path';
 
 export const getGalleries = async (): Promise<string[]> => {
   const galleriesPath = path.join(process.cwd(), `public/galleries`);
-  return await (await fs.promises.readdir(galleriesPath, "utf8")).filter(x => !x.startsWith("."))
+  return await (await fs.promises.readdir(galleriesPath, "utf8")).filter(x => !x.startsWith(".") && !x.endsWith(".zip"))
 }
 
 export default async function handler(

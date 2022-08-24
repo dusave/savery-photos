@@ -36,9 +36,9 @@ const Wedding = ({files, gid, keyPhoto, zipLocation}: GalleryProps) => {
 
   return (
     <div>
-      {zipLocation && <Link href={zipLocation}>
-        <Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Download Entire Gallery</Button>
-      </Link>}
+      <a className={styles.download} href={`/galleries/${gid}.zip`} download>
+        <Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost><span>Download Entire Gallery</span></Button>
+      </a>
       {keyPhoto && <div className={styles.keyPhoto}><Image src={`/galleries/${gid}/${keyPhoto}.jpeg`} layout='fill' alt={`${gid} album`} /></div>}
       <div className={styles.galleryView} ref={lazyRoot} style={{}}>
         {items?.map((file, index) => (

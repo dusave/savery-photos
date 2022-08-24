@@ -31,3 +31,17 @@
 .photo {
   margin: 1rem;
 }
+
+.download {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  span {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline;
+    }
+  }
+}

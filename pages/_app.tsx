@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <div className={styles.root}>
     <header className={isRoot? styles.header : styles.noHeader}>
-      <h1>Savery Photography</h1>
+      <h1>Savery Photos</h1>
     </header>
     <main className={styles.main}>
       <Component {...pageProps} />

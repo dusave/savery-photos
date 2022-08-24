@@ -6,16 +6,27 @@
 }
 
 .header {
-  display: none;
   height: 2rem;
   margin: 1rem;
-  width: 100vw;
+  width: auto;
 
   h1 {
     margin: 0;
     text-align: center;
   }
-  
+}
+
+.noHeader {
+  display: none;
+  height: 2rem;
+  margin: 1rem;
+  width: auto;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
   @media (min-width: 768px) {
     display: block;
   }

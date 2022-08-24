@@ -59,17 +59,17 @@ const Wedding = () => {
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      router.push(`/${parseInt(pid as string) - 1}`)
+      router.push(`/${parseInt(pid as string) + 1}`)
     },
     onSwipedRight: () => {
-      router.push(`/${parseInt(pid as string) + 1}`)
+      router.push(`/${parseInt(pid as string) - 1}`)
     }
   })
 
   if(!gid || !pid) return <p>Not a valid id</p>
   return (
     <section className={styles.container} {...handlers}>
-      <div className={styles.closeButton}><Link href={`/`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('x')} />}></Button></Link></div>
+      <div className={styles.closeButton}><Link href={`/`}><a><FontAwesomeIcon icon={duotone('x')} /></a></Link></div>
       <div className={styles.photoContainer}>
         <div className={styles.leftArrow}><Link href={`/${parseInt(pid as string) - 1}`}><Button rounded color="secondary" auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-left')} />}></Button></Link></div>
         <div className={styles.photo}>

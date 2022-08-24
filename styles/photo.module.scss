@@ -1,0 +1,58 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr min-content;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+.leftArrow,
+.rightArrow {
+  display: none;
+
+  @media (min-width: 768px) {
+    flex-direction: block;
+  }
+}
+
+.photoContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  width: 100vw;
+
+  @media (min-width: 768px) {
+    gap: 2;    
+    padding: '2rem';
+  }
+}
+
+.photo {
+  width: 100vw;
+  height: calc(100vh - 358px);
+  display: block;
+  position: relative;
+  flex: 1;
+
+  @media (min-width: 768px) {
+    margin: 2rem;
+    height: 80vh;
+  }
+}

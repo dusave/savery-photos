@@ -1,0 +1,30 @@
+.keyPhoto {
+  position: relative;
+}
+
+.galleryView {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1rem;
+  gap: 1rem;
+  width: fit-content;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(10, 1fr);
+    margin: 1rem auto;
+  }
+}
+
+.photoLink {
+  position: 'relative';
+  transform: scale(1);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.photo {
+  margin: 1rem;
+}

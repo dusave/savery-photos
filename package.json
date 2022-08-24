@@ -1,5 +1,5 @@
 {
-  "name": "savery-photograph",
+  "name": "savery-photography",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/helper-module-imports": "^7.18.6",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/pro-duotone-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@nextui-org/react": "1.0.0-beta.9",
+    "@types/sharp": "^0.30.5",
+    "babel-plugin-macros": "^3.1.0",
+    "jszip": "^3.10.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-swipeable": "^7.0.0",
+    "sharp": "^0.30.7"
   },
   "devDependencies": {
     "@types/node": "18.7.6",
@@ -19,6 +29,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "sass": "^1.54.4",
     "typescript": "4.7.4"
   }
 }

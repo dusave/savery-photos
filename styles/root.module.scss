@@ -1,0 +1,27 @@
+.root {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.header {
+  display: none;
+  height: 2rem;
+  margin: 1rem;
+  width: 100vw;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.main {
+  height: 100%;
+  overflow: auto;
+}

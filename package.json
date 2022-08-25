@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "generate:images": "ts-node ./scripts/generate-images.ts",
     "dev": "next dev",
-    "build": "npm run generate:images && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

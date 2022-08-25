@@ -1,11 +1,10 @@
 import path from "path";
 import fs from 'fs'
-import sharp from "sharp";
 
-interface GalleryConfig {
+export interface GalleryConfig {
   keyPhoto: string
-  gid: string
   zipLocation: string
+  length: number
 }
 
 export const getGalleries = async (): Promise<string[]> => {

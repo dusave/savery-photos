@@ -9,17 +9,20 @@ import { useTheme } from '@nextui-org/react';
 import { GetStaticPropsContext } from 'next';
 import styles from 'styles/photo.module.scss'
 import { useSwipeable } from 'react-swipeable';
-import { getGalleries, getGalleryFiles } from 'utils/galleryData';
+import { getConfig, getGalleryFiles } from 'utils/galleryData';
 
 export async function getStaticPaths() {
-  const galleries = await getGalleries();
-  const paths = await Promise.all(await galleries.map(async (g) => {
-    const files = await getGalleryFiles(g)
-    return [...files.map((f) => ({ params: { gid: g, pid: f.split('.')[0]} }))]
-  }));
+
+  const gid = 'killham-savery'
+  const config = await getConfig(gid as string);
+  const paths: Array<string> = []
+
+  for (let i = 0; i < config.length; i++) {
+    paths.push(`/photos/${i + 1}`)
+  }
 
   return {
-    paths: paths.flat(),
+    paths,
     fallback: false,
   }
 }
@@ -81,16 +84,17 @@ const Wedding = ({pid, gid, galleryCount}: WeddingProps) => {
       <div className={styles.photoContainer}>
         <div className={styles.leftArrow}><Link href={`/photos/${parseInt(pid as string) - 1}`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-left')} />}></Button></Link></div>
         <div className={styles.photo}>
-            <Image src={`/galleries/${gid}/${pid}.jpeg`} priority loading="eager" layout='fill' alt={`The ${gid} wedding, photo ${pid}`} objectFit={'contain'} />
+            <Image src={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} priority loading="eager" layout='fill' alt={`The ${gid} wedding, photo ${pid}`} objectFit={'contain'} />
         </div>
         <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><Button rounded auto ghost icon={<FontAwesomeIcon icon={duotone('chevron-right')} color={theme?.colors.primary.value} /> } css={{color: '$primary'}}></Button></Link></div>
       </div>
       <div className={styles.buttonContainer}>
-        <a href={`/galleries/${gid}/sm/${pid}`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></a>
-        <a href={`/galleries/${gid}/lg/${pid}`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Large Image</Button></a>
-        <a href={`/galleries/${gid}/${pid}`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Fullsize Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/sm/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/lg/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Large Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Fullsize Image</Button></a>
       </div>
     </section>
+    
   )
 }
 

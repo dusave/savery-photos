@@ -7,45 +7,50 @@ import Link from 'next/link'
 
 import styles from 'styles/wedding.module.scss'
 import { useMemo, useRef } from 'react'
-import { natSort } from 'utils/sort'
-import { getConfig } from 'utils/galleryData'
-
-interface GalleryProps {
-  keyPhoto: string
-  gid: string
-  zipLocation: string
-  files: Array<string>
-}
+import { GalleryConfig, getConfig } from 'utils/galleryData'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const gid = 'killham-savery'
   const config = await getConfig(gid as string);
-  const props: Partial<GalleryProps> = {...config}
+  const props: Partial<GalleryConfig> = {...config}
   
   return {
     props
   }
 }
 
-const Wedding = ({files, gid, keyPhoto, zipLocation}: GalleryProps) => {
+interface WeddingProps extends GalleryConfig {
+  gid: string
+}
+
+const Wedding = ({length, gid, keyPhoto, zipLocation}: WeddingProps) => {
 
   const lazyRoot = useRef(null)
   const items = useMemo(() => {
-    return natSort(files)
-  }, [files])
+    return new Array(length).fill(0)
+  }, [length])
 
   return (
     <div>
       <a className={styles.download} href={zipLocation} download>
         <Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost><span>Download Entire Gallery</span></Button>
       </a>
-      {keyPhoto && <div className={styles.keyPhoto}><Image src={`/galleries/${gid}/${keyPhoto}.jpeg`} layout='fill' alt={`${gid} album`} /></div>}
-      <div className={styles.galleryView} ref={lazyRoot} style={{}}>
+      {keyPhoto && <div className={styles.keyPhoto}><Image src={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${keyPhoto}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} layout='fill' alt={`${gid} album`} /></div>}
+      <div className={styles.galleryView} ref={lazyRoot}>
         {items?.map((file, index) => (
           <div key={`${gid}-${index}`} className={styles.photoLink}>
-            <Link href={`/photos/${file.split('.')[0]}`}>
-              <a href={`/photos/${file.split('.')[0]}`}>
-                <Image src={`/galleries/${gid}/${file}`} lazyRoot={lazyRoot} loading="lazy" width={120} height={150} alt={`${gid} Gallery, Photo ${index + 1} of ${files.length}`} className={styles.photo} objectFit='cover' />
+            <Link href={`/photos/${index + 1}`}>
+              <a href={`/photos/${index + 1}`}>
+                <Image
+                  src={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${index + 1}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`}
+                  lazyRoot={lazyRoot}
+                  loading="lazy"
+                  width={120}
+                  height={150}
+                  alt={`${gid} Gallery, Photo ${index + 1} of ${length}`}
+                  className={styles.photo}
+                  objectFit='cover'
+                />
               </a>
             </Link>
           </div>

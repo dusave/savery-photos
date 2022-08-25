@@ -7,14 +7,15 @@
 }
 
 .buttonContainer {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1rem;
   margin: 1rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
+    justify-content: center;
   }
 }
 

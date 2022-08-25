@@ -6,11 +6,12 @@
 }
 
 .header {
-  height: 2rem;
+  height: fit-content;
   margin: 1rem;
   width: auto;
 
   h1 {
+    font-weight: 300;
     margin: 0;
     text-align: left;
 
@@ -22,11 +23,12 @@
 
 .noHeader {
   display: none;
-  height: 2rem;
+  height: fit-content;
   margin: 1rem;
   width: auto;
 
   h1 {
+    font-weight: 300;
     margin: 0;
     text-align: center;
   }

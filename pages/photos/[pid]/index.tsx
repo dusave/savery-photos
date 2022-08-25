@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { Button } from "@nextui-org/react";
 import { useRouter } from 'next/router'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useTheme } from '@nextui-org/react';
@@ -80,18 +78,18 @@ const Wedding = ({pid, gid, galleryCount}: WeddingProps) => {
   if(!gid || !pid) return <p>Not a valid id</p>
   return (
     <section className={styles.container} {...handlers}>
-      <div className={styles.closeButton}><Link href={`/`}><a><FontAwesomeIcon icon={duotone('x')} /></a></Link></div>
+      <div className={styles.closeButton}><Link href={`/`}><a><i className="fa-solid fa-x"></i></a></Link></div>
       <div className={styles.photoContainer}>
-        <div className={styles.leftArrow}><Link href={`/photos/${parseInt(pid as string) - 1}`}><FontAwesomeIcon icon={duotone('chevron-left')} /></Link></div>
+        <div className={styles.leftArrow}><Link href={`/photos/${parseInt(pid as string) - 1}`}><a href={`/photos/${parseInt(pid as string) - 1}`}><i className="fa-solid fa-chevron-left"></i></a></Link></div>
         <div className={styles.photo}>
             <Image src={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} priority loading="eager" layout='fill' alt={`The ${gid} wedding, photo ${pid}`} objectFit={'contain'} />
         </div>
-        <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><FontAwesomeIcon icon={duotone('chevron-right')}/></Link></div>
+        <div className={styles.rightArrow}><Link href={`/photos/${parseInt(pid as string) + 1}`}><a href={`/photos/${parseInt(pid as string) + 1}`}><i className="fa-solid fa-chevron-right"></i></a></Link></div>
       </div>
       <div className={styles.buttonContainer}>
-        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/sm/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Small Image</Button></a>
-        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/lg/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Large Image</Button></a>
-        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost>Fullsize Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/sm/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<i className="fa-duotone fa-download"></i>} auto ghost>Small Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/lg/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<i className="fa-duotone fa-download"></i>} auto ghost>Large Image</Button></a>
+        <a href={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${pid}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} download><Button icon={<i className="fa-duotone fa-download"></i>} auto ghost>Fullsize Image</Button></a>
       </div>
     </section>
     

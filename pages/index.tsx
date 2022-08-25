@@ -1,5 +1,3 @@
-import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '@nextui-org/react'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
@@ -33,7 +31,7 @@ const Wedding = ({length, gid, keyPhoto, zipLocation}: WeddingProps) => {
   return (
     <div>
       <a className={styles.download} href={zipLocation} download>
-        <Button icon={<FontAwesomeIcon icon={duotone('download')} />} auto ghost><span>Download Entire Gallery</span></Button>
+        <Button icon={<i className="fa-duotone fa-download"></i>} auto ghost><span>Download Entire Gallery</span></Button>
       </a>
       {keyPhoto && <div className={styles.keyPhoto}><Image src={`https://saveryphotos.file.core.windows.net/photos/galleries/${gid}/${keyPhoto}.jpeg?sv=2021-06-08&ss=f&srt=o&sp=r&se=2025-08-25T11:26:51Z&st=2022-08-25T03:26:51Z&spr=https&sig=kyP%2BAERDdeaFgaEOCurdbSM5a9sjURrXF0bJV5OmGuI%3D`} layout='fill' alt={`${gid} album`} /></div>}
       <div className={styles.galleryView} ref={lazyRoot}>
